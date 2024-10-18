@@ -1,4 +1,5 @@
 package complexNumb;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Matrix {
@@ -18,8 +19,12 @@ public class Matrix {
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
                     System.out.print("(" + i + "," + j + ") элемент (" + count + " число)\nВведите число: ");
-                    elements[i][j].setRe(scan.nextFloat());
-                    elements[i][j].setIm(scan.nextFloat());
+                    try {
+                        elements[i][j].setRe(scan.nextFloat());
+                        elements[i][j].setIm(scan.nextFloat());
+                    } catch (InputMismatchException e){
+                        System.out.println("Введите число");
+                    }
                     count++;
                 }
             }
